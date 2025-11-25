@@ -46,11 +46,11 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
         let req = metas[grado];
 
         if (req > 100) {
-            salida += `<li><b>${grado}:</b> IM-POSIBLE (necesitas ${(req/40*100).toFixed(2)} puntos)</li>`;
+            salida += `<li><b>${grado}:</b> IM-POSIBLE (necesitas ${(req).toFixed(2)} puntos)</li>`;
         } else if (req <= 0) {
             salida += `<li><b>${grado}:</b> Ya asegurado</li>`;
         } else {
-            salida += `<li><b>${grado}:</b> Necesitas al menos ${(req/40*100).toFixed(2)} puntos</li>`;
+            salida += `<li><b>${grado}:</b> Necesitas al menos ${req.toFixed(2)} puntos</li>`;
         }
     }
 
