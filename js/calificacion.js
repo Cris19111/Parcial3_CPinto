@@ -6,10 +6,9 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
     let p1 = parseFloat(document.getElementById("parcial1").value);
     let p2 = parseFloat(document.getElementById("parcial2").value);
     let p3 = parseFloat(document.getElementById("parcial3").value);
-    let sem = parseFloat(document.getElementById("semestral").value);
 
     
-    if (isNaN(p1) || isNaN(p2) || isNaN(p3) || isNaN(sem)) {
+    if (isNaN(p1) || isNaN(p2) || isNaN(p3)) {
         document.getElementById("resultado").innerHTML =
             "<div'>Debes llenar todos los campos.</div>";
         return;
@@ -19,23 +18,23 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
     let promedioParciales = ((p1 + p2 + p3) / 300) * 60;
 
 
-    let final40 = (sem / 100) * 40;
 
-    let notaFinal = promedioParciales + final40;
+    let notaFinal = promedioParciales + final;
 
 
 
     function minimoRequerido(meta) {
-        let puntosNecesarios = meta - promedioParciales;
-        let minimoFinal = (puntosNecesarios / 40) * 100;
-        return minimoFinal;
+        
+        let puntosNecesarios = meta - promedioParciales; // cuánto falta
+        let minimoSemestral = (puntosNecesarios / 40) * 100; 
+        return minimoSemestral;
     }
 
     let metas = {
-        "A (90+)": minimoRequerido(90),
-        "B (80+)": minimoRequerido(80),
-        "C (70+)": minimoRequerido(70),
-        "D (60+)": minimoRequerido(60),
+        "A (90+)": minimoRequerido(91),
+        "B (80+)": minimoRequerido(81),
+        "C (70+)": minimoRequerido(71),
+        "D (60+)": minimoRequerido(61),
         "F (<60)": 0 
     };
 
@@ -53,7 +52,7 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
     for (let grado in metas) {
         let req = metas[grado];
         if (req > 100) {
-            salida += `<li><b>${grado}:</b> IM-POSIBLE (necesitas ${req.toFixed(2)}%)</li>`;
+            salida += `<li><b>${grado}:</b> IM-POSIBLE (necesitas ${req}%)</li>`;
         } else if (req <= 0) {
             salida += `<li><b>${grado}:</b> Ya asegurado</li>`;
         } else {
@@ -69,18 +68,5 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
 
 
 
-document.getElementById("btnInvertir").addEventListener("click", function(e) {
-    e.preventDefault();
-    const valorNumInverso = document.getElementById("valorInv").value || "";
-    
-    let inverso = "";
-    for (let i = valorNumInverso.length - 1; i >= 0; i--) {
-        inverso += valorNumInverso[i];
-    }
 
-    if (inverso === "") {
-        document.getElementById("resultadoInverso").textContent = "Ingrese un valor para invertir.";
-    } else {
-        document.getElementById("resultadoInverso").textContent = "El numero inverso es: " + inverso;
-    }
-});
+
