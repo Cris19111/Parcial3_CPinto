@@ -26,10 +26,10 @@ document.getElementById("calcularBtn").addEventListener("click", function(e) {
     }
 
     let metas = {
-        "A (90+)": minimoRequerido(90),
-        "B (80+)": minimoRequerido(80),
-        "C (70+)": minimoRequerido(70),
-        "D (60+)": minimoRequerido(60),
+        "A (90+)": minimoRequerido(91),
+        "B (80+)": minimoRequerido(81),
+        "C (70+)": minimoRequerido(71),
+        "D (60+)": minimoRequerido(61),
         "F (<60)": 0
     };
 
